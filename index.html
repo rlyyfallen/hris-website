@@ -6,25 +6,41 @@
   <title>HRIS Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script defer src="script.js"></script>
 </head>
 <body>
   <header>
     <h1>HRIS Dashboard</h1>
     <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Employees</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Settings</a></li>
+      <ul class="tabs">
+        <li class="tab active" data-tab="dashboard">Dashboard</li>
+        <li class="tab" data-tab="employee-calculation">Employee Calculation</li>
+        <li class="tab" data-tab="upcoming-tasks">Upcoming Tasks</li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- Employee Input Form -->
-    <section class="form-section">
-      <h2>Add Employee</h2>
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="tab-content active">
+      <h2>Dashboard Overview</h2>
+      <div class="card">
+        <h3>Marketing Team</h3>
+        <p>Employees: 10</p>
+        <p>Average Salary: $50,000</p>
+      </div>
+      <div class="card">
+        <h3>Engineering Team</h3>
+        <p>Employees: 15</p>
+        <p>Average Salary: $80,000</p>
+      </div>
+    </section>
+
+    <!-- Employee Calculation Section -->
+    <section id="employee-calculation" class="tab-content">
+      <h2>Employee Calculation</h2>
       <form id="employeeForm">
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Employee Name" required>
@@ -43,11 +59,8 @@
 
         <button type="button" id="addEmployee">Add Employee</button>
       </form>
-    </section>
 
-    <!-- Employee Data Table -->
-    <section class="data-section">
-      <h2>Employee Data</h2>
+      <h3>Employee Data</h3>
       <table>
         <thead>
           <tr>
@@ -62,6 +75,16 @@
         </thead>
         <tbody id="employeeTable"></tbody>
       </table>
+    </section>
+
+    <!-- Upcoming Tasks Section -->
+    <section id="upcoming-tasks" class="tab-content">
+      <h2>Upcoming Tasks</h2>
+      <input type="text" id="taskDatePicker" placeholder="Select a date">
+      <ul id="taskList">
+        <li>Team Meeting - Jan 30, 2025</li>
+        <li>Annual Review - Feb 15, 2025</li>
+      </ul>
     </section>
   </main>
 </body>
