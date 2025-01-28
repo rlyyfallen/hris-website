@@ -3,53 +3,68 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #fff;
+  background: #f4f7fc;
+  color: #333;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 20px;
-  background: #2d2d44;
+  background: #2575fc;
+  color: #fff;
 }
 
 header h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 nav ul {
-  list-style: none;
   display: flex;
-  gap: 15px;
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  transition: color 0.3s ease;
+nav ul li {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 15px 15px 0 0;
+  margin: 0 5px;
 }
 
-nav ul li a:hover {
-  color: #00e6e6;
+nav ul li.active {
+  background: #2196f3;
 }
 
 main {
   padding: 20px;
-}
-
-section {
-  margin-bottom: 30px;
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-  color: #333;
-  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Dashboard Cards */
+.card {
+  background: #e3f2fd;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Forms */
 form label {
   display: block;
   margin-bottom: 5px;
@@ -60,40 +75,19 @@ form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border-radius: 5px;
-  border: 2px solid #ddd;
+  border-radius: 10px;
+  border: 1px solid #ddd;
 }
 
 button {
-  background-color: #2575fc;
+  background: #2575fc;
   color: white;
-  padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0d47a1;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-th {
-  background-color: #2575fc;
-  color: white;
-}
-
-canvas {
-  width: 100px;
-  height: 100px;
+  background: #1e88e5;
 }
