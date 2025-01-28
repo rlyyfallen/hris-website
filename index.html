@@ -3,31 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HRIS Leave Deduction System</title>
+    <title>HRIS Leave and Benefits Management</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>HRIS Leave Deduction System</h1>
+        <h1>HRIS Leave and Benefits Management</h1>
     </header>
     
-    <div class="form-container">
-        <h2>Employee Leave Form</h2>
-        <form id="leaveForm">
-            <label for="name">Employee Name:</label>
-            <input type="text" id="name" placeholder="Enter employee name" required>
+    <main>
+        <section class="form-section">
+            <h2>Add Employee</h2>
+            <form id="employeeForm">
+                <label for="name">Employee Name:</label>
+                <input type="text" id="name" placeholder="Enter employee name" required>
 
-            <label for="salary">Base Salary ($):</label>
-            <input type="number" id="salary" placeholder="Enter base salary" required>
+                <label for="salary">Base Salary ($):</label>
+                <input type="number" id="salary" placeholder="Enter base salary" required>
 
-            <label for="leaveDays">Number of Leave Days:</label>
-            <input type="number" id="leaveDays" placeholder="Enter leave days" required>
-        </form>
-    </div>
-    
-    <div id="result" class="result">
-        <h3>Salary After Deduction: $<span id="finalSalary">0.00</span></h3>
-    </div>
+                <label for="leaveDays">Number of Leave Days:</label>
+                <input type="number" id="leaveDays" placeholder="Enter leave days" required>
+
+                <label for="pf">Provident Fund (%):</label>
+                <input type="number" id="pf" value="12" placeholder="Enter PF percentage">
+
+                <label for="k401">401(k) Contribution (%):</label>
+                <input type="number" id="k401" value="5" placeholder="Enter 401(k) percentage">
+
+                <button type="button" id="addEmployee">Add Employee</button>
+            </form>
+        </section>
+
+        <section class="comparison-section">
+            <h2>Employee Comparisons</h2>
+            <table id="employeeTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Base Salary ($)</th>
+                        <th>Leave Deduction ($)</th>
+                        <th>PF Deduction ($)</th>
+                        <th>401(k) Contribution ($)</th>
+                        <th>Net Salary ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Employee rows will be added dynamically here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
 </body>
 </html>
