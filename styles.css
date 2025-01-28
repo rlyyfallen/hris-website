@@ -1,10 +1,10 @@
 /* style.css */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
     margin: 0;
     padding: 0;
-    transition: all 0.3s ease-in-out;
+    color: #333;
 }
 
 header {
@@ -12,7 +12,7 @@ header {
     color: white;
     text-align: center;
     padding: 20px 0;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -27,12 +27,16 @@ h2 {
 
 .form-container {
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     margin: 40px auto;
-    padding: 20px;
-    transition: all 0.3s ease-in-out;
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: scale(1.02);
 }
 
 form {
@@ -43,21 +47,32 @@ form {
 label {
     margin-bottom: 5px;
     font-weight: bold;
+    color: #555;
 }
 
 input {
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: border 0.3s ease;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
 }
 
 input:focus {
     border-color: #3f51b5;
+    outline: none;
 }
 
-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10
+.result {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #3f51b5;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.result.visible {
+    opacity: 1;
+}
