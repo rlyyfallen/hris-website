@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HRIS Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRIS Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>HRIS Dashboard</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Employees</a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>HRIS Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Employees</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section class="form-section">
-            <h2>Add Employee</h2>
-            <form id="employeeForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Employee Name" required>
+  <main>
+    <!-- Employee Input Form -->
+    <section class="form-section">
+      <h2>Add Employee</h2>
+      <form id="employeeForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Employee Name" required>
 
-                <label for="salary">Base Salary ($):</label>
-                <input type="number" id="salary" placeholder="Salary" required>
+        <label for="salary">Base Salary ($):</label>
+        <input type="number" id="salary" placeholder="Salary" required>
 
-                <label for="leaveDays">Leave Days:</label>
-                <input type="number" id="leaveDays" placeholder="Number of Leave Days" required>
+        <label for="leaveDays">Leave Days:</label>
+        <input type="number" id="leaveDays" placeholder="Number of Leave Days" required>
 
-                <label for="pf">Provident Fund (%):</label>
-                <input type="number" id="pf" value="12" required>
+        <label for="pf">Provident Fund (%):</label>
+        <input type="number" id="pf" value="12" required>
 
-                <label for="k401">401(k) Contribution (%):</label>
-                <input type="number" id="k401" value="5" required>
+        <label for="k401">401(k) Contribution (%):</label>
+        <input type="number" id="k401" value="5" required>
 
-                <button type="button" id="addEmployee">Add Employee</button>
-            </form>
-        </section>
+        <button type="button" id="addEmployee">Add Employee</button>
+      </form>
+    </section>
 
-        <section class="data-section">
-            <h2>Employee Data</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Base Salary ($)</th>
-                        <th>Leave Deduction ($)</th>
-                        <th>PF Deduction ($)</th>
-                        <th>401(k) Contribution ($)</th>
-                        <th>Net Salary ($)</th>
-                        <th>Pie Chart</th>
-                    </tr>
-                </thead>
-                <tbody id="employeeTable">
-                    <!-- Rows will be added dynamically -->
-                </tbody>
-            </table>
-        </section>
-    </main>
+    <!-- Employee Data Table -->
+    <section class="data-section">
+      <h2>Employee Data</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Base Salary ($)</th>
+            <th>Leave Deduction ($)</th>
+            <th>PF Deduction ($)</th>
+            <th>401(k) Contribution ($)</th>
+            <th>Net Salary ($)</th>
+            <th>Pie Chart</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTable"></tbody>
+      </table>
+    </section>
+  </main>
 </body>
 </html>
