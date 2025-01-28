@@ -1,51 +1,53 @@
-// script.js
-document.addEventListener("DOMContentLoaded", function () {
-    const employeeForm = document.getElementById("employeeForm");
-    const employeeTable = document.getElementById("employeeTable").querySelector("tbody");
-    const addEmployeeButton = document.getElementById("addEmployee");
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("employeeForm");
+    const tableBody = document.getElementById("employeeTable");
 
-    // Function to calculate deductions
-    function calculateDeductions(salary, leaveDays, pfPercent, k401Percent) {
-        const dailyRate = salary / 30; // Assuming 30 days in a month
-        const leaveDeduction = dailyRate * leaveDays;
-        const pfDeduction = (pfPercent / 100) * salary;
-        const k401Deduction = (k401Percent / 100) * salary;
-        const netSalary = salary - leaveDeduction - pfDeduction;
-
-        return { leaveDeduction, pfDeduction, k401Deduction, netSalary };
-    }
-
-    // Function to add an employee to the table
-    function addEmployee() {
+    // Add Employee Functionality
+    document.getElementById("addEmployee").addEventListener("click", () => {
         const name = document.getElementById("name").value;
         const salary = parseFloat(document.getElementById("salary").value);
-        const leaveDays = parseInt(document.getElementById("leaveDays").value);
+        const leaveDays = parseFloat(document.getElementById("leaveDays").value);
         const pfPercent = parseFloat(document.getElementById("pf").value);
         const k401Percent = parseFloat(document.getElementById("k401").value);
 
-        if (!name || isNaN(salary) || isNaN(leaveDays) || isNaN(pfPercent) || isNaN(k401Percent)) {
-            alert("Please fill out all fields correctly.");
-            return;
-        }
+        const dailyRate = salary / 30;
+        const leaveDeduction = leaveDays * dailyRate;
+        const pfDeduction = (pfPercent / 100) * salary;
+        const k401Contribution = (k401Percent / 100) * salary;
+        const netSalary = salary - leaveDeduction - pfDeduction;
 
-        const { leaveDeduction, pfDeduction, k401Deduction, netSalary } =
-            calculateDeductions(salary, leaveDays, pfPercent, k401Percent);
-
-        const row = `
-            <tr>
-                <td>${name}</td>
-                <td>$${salary.toFixed(2)}</td>
-                <td>$${leaveDeduction.toFixed(2)}</td>
-                <td>$${pfDeduction.toFixed(2)}</td>
-                <td>$${k401Deduction.toFixed(2)}</td>
-                <td>$${netSalary.toFixed(2)}</td>
-            </tr>
+        // Add a row
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>${salary.toFixed(2)}</td>
+            <td>${leaveDeduction.toFixed(2)}</td>
+            <td>${pfDeduction.toFixed(2)}</td>
+            <td>${k401Contribution.toFixed(2)}</td>
+            <td>${netSalary.toFixed(2)}</td>
+            <td><canvas id="chart-${name}"></canvas></td>
         `;
 
-        employeeTable.innerHTML += row;
-        employeeForm.reset();
-    }
+        tableBody.appendChild(row);
 
-    // Event Listener
-    addEmployeeButton.addEventListener("click", addEmployee);
+        // Add Pie Chart
+        const ctx = document.getElementById(`chart-${name}`).getContext("2d");
+        new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: ["Net Salary", "Leave Deduction", "PF", "401(k)"],
+                datasets: [
+                    {
+                        data: [
+                            netSalary,
+                            leaveDeduction,
+                            pfDeduction,
+                            k401Contribution,
+                        ],
+                        backgroundColor: ["#4caf50", "#f44336", "#2196f3", "#ff9800"],
+                    },
+                ],
+            },
+        });
+    });
 });
